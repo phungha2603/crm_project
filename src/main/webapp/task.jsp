@@ -46,7 +46,7 @@
                         <i class="fa fa-bars"></i>
                     </a>
                     <div class="top-left-part">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="<c:url value="/index"/>">
                             <b>
                                 <img src="plugins/images/pixeladmin-logo.png" alt="home" />
                             </b>
@@ -111,11 +111,11 @@
                                 aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
                     </li>
                     <li>
-                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="<c:url value="/blank"/>" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Blank Page</span></a>
                     </li>
                     <li>
-                        <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw"
+                        <a href="<c:url value="/404"/>" class="waves-effect"><i class="fa fa-info-circle fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Error 404</span></a>
                     </li>
                 </ul>
@@ -153,34 +153,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Phân tích dự án</td>
-                                            <td>Dự án CRM</td>
-                                            <td>Nguyễn Văn Tèo</td>
-                                            <td>22/05/2019</td>
-                                            <td>30/05/2019</td>
-                                            <td>Đã hoàn thành</td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xóa</a>
-                                                <a href="#" class="btn btn-sm btn-info">Xem</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Thiết kế database</td>
-                                            <td>Dự án CRM</td>
-                                            <td>Trần Thị Lan</td>
-                                            <td>22/05/2019</td>
-                                            <td>30/05/2019</td>
-                                            <td>Đang thực hiện</td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xóa</a>
-                                                <a href="#" class="btn btn-sm btn-info">Xem</a>
-                                            </td>
-                                        </tr>
+                                    	<c:forEach var="item" items="${listTask}">
+                                    		<tr>
+	                                            <td>${item.id}</td>
+	                                            <td>${item.name}</td>
+	                                            <td>${item.project.name}</td>
+	                                            <td>${item.users.fullName}</td>
+	                                            <td>${item.startDate}</td>
+	                                            <td>${item.endDate}</td>
+	                                            <td>${item.status.name}</td>
+	                                            <td>
+	                                                <a href="<c:url value="/task-edit?taskId=${item.id}"/>" class="btn btn-sm btn-primary btn-edit" id-task="${item.id}">Sửa</a>
+	                                                <a href="#" class="btn btn-sm btn-danger btn-xoa" id-task="${item.id}">Xóa</a>
+	                                                <a href="#" class="btn btn-sm btn-info">Xem</a>
+	                                            </td>
+	                                        </tr> 
+                                    	</c:forEach>
+                                                                         
                                     </tbody>
                                 </table>
                             </div>
@@ -213,6 +202,9 @@
             $('#example').DataTable();
         });
     </script>
+    <!-- import file js để sử dụng -->
+    <script type="text/javascript" src="js/task.js"></script>
+    
 </body>
 
 </html>

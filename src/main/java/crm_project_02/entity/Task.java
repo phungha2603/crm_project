@@ -4,8 +4,6 @@ import org.apache.catalina.User;
 
 public class Task {
 	private int id;
-	private int id_project;
-	private int id_user;
 	private String name;
 	private String startDate;
 	private String endDate;
@@ -18,18 +16,6 @@ public class Task {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getId_project() {
-		return id_project;
-	}
-	public void setId_project(int id_project) {
-		this.id_project = id_project;
-	}
-	public int getId_user() {
-		return id_user;
-	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
 	}
 	public String getName() {
 		return name;

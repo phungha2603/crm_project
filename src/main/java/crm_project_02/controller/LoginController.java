@@ -43,7 +43,7 @@ import crm_project_02.service.UserService;
  * - B4: Kiểm tra dữ liệu. Nếu có dữ liệu thì là đăng nhập thành công và ngược lại là đăng nhập thất bại.
  */
 
-@WebServlet(name="loginController", urlPatterns = {"/index","","/login"})
+@WebServlet(name="loginController", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet{
 //	UserRepository userRepository = new UserRepository();
 //	@Override
@@ -116,7 +116,7 @@ public class LoginController extends HttpServlet{
 	UserService userService = new UserService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("index.jsp").forward(req, resp);
+		req.getRequestDispatcher("login.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -127,9 +127,9 @@ public class LoginController extends HttpServlet{
 		Users users = userService.login(email, password);
 		list.add(users);
 		if(list.size()>0) {
-			resp.sendRedirect(contextPath + "/index");
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
 		}else {
-			req.getRequestDispatcher("login.html").forward(req, resp);
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
 		
 	}

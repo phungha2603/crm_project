@@ -127,7 +127,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Thêm mới công việc</h4>
+                        <h4 class="page-title">Thay đổi thông tin công việc</h4>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -136,7 +136,7 @@
                     <div class="col-md-2 col-12"></div>
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
-                            <form action="<c:url value='/task-add' />" method="post" class="form-horizontal form-material">
+                            <form action="<c:url value='/task-edit' />" method="post" class="form-horizontal form-material">
                                 <div class="form-group">
                                     <label class="col-md-12">Dự án</label>
                                     <div class="col-md-12">
@@ -150,8 +150,9 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Tên công việc</label>
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="Tên công việc"
+                                        <input type="text" placeholder="${task.name}"
                                             class="form-control form-control-line" name="name">
+                                        <input type="hidden" name="id" value="${task.id}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -167,21 +168,31 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày bắt đầu</label>
                                     <div class="col-md-12">
-                                        <input type="date" placeholder="dd/MM/yyyy" value="2018-07-22" min="1950-01-01" max="2100-12-31"
+                                        <input type="date" placeholder="${item.startDate}" value="2018-07-22" min="1950-01-01" max="2100-12-31"
                                             class="form-control form-control-line" name="startDate"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày kết thúc</label>
                                     <div class="col-md-12">
-                                        <input type="date" placeholder="dd/MM/yyyy" value="2018-07-22" min="1950-01-01" max="2100-12-31"
+                                        <input type="date" placeholder="${item.endDate}" value="2018-07-22" min="1950-01-01" max="2100-12-31"
                                             class="form-control form-control-line" name="endDate"> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Trạng thái</label>
+                                    <div class="col-md-12">
+                                        <select name="status" class="form-control form-control-line">
+                                        	<c:forEach var="item" items="${listStatus}">
+                                        		<option value="${item.id}">${item.name}</option>
+                                        	</c:forEach>                                            
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-success">Lưu lại</button>
-                                        <a href="<c:url value="/task-table"/>" class="btn btn-primary">Quay lại</a>
+                                        <a href="<c:url value="/task"/>" class="btn btn-primary">Quay lại</a>
                                     </div>
                                 </div>
                             </form>
@@ -209,6 +220,8 @@
     <script src="js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
+    <!-- import file js để sử dụng -->
+    <script type="text/javascript" src="js/task-edit.js"></script>
 </body>
 
 </html>

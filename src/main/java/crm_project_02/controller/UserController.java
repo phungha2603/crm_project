@@ -75,7 +75,7 @@ public class UserController extends HttpServlet {
 				String email = req.getParameter("email");
 				int idRole = Integer.parseInt(req.getParameter("role"));
 				
-				boolean isSuccess = userService.insertUser(firstname, lastname, fullname, username, email, email, phone, idRole);
+				boolean isSuccess = userService.insertUser(firstname, lastname, fullname, username, password, email, phone, idRole);
 				
 				List<Role> list = new ArrayList<Role>();
 				list = userService.getAllRole();		
