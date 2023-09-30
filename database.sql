@@ -1,6 +1,6 @@
 -- CREATE TABLE
-CREATE DATABASE cc;
-USE cc;
+CREATE DATABASE Project;
+USE Project;
 
 
 CREATE TABLE Users(
